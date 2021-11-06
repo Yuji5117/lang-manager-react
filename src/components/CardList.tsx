@@ -1,5 +1,8 @@
 import React from "react";
-import Card from "./Card";
+import styled from "styled-components";
+import VocabularyCard from "./VocabularyCard";
+
+import Grid from "@mui/material/Grid";
 
 interface langWord {
   id: number;
@@ -14,13 +17,13 @@ interface PrposType {
 
 const CardList = (props: PrposType) => {
   return (
-    <div>
-      カードリスト
+    <Grid container spacing={4}>
       {props.langWords.map((langWord) => (
-        <Card key={langWord.id} langWord={langWord} />
+        <Grid item>
+          <VocabularyCard key={langWord.id} langWord={langWord} />
+        </Grid>
       ))}
-      {/* Card */}
-    </div>
+    </Grid>
   );
 };
 
