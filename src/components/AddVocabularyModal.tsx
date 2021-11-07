@@ -38,7 +38,10 @@ function AddVocabularyModal(props: PropsType) {
             name="translatedLang"
           />
           <input type="file" />
-          <Button variant="contained" onClick={props.AddVocablary}>
+          <Button
+            variant="contained"
+            onClick={props.AddVocablary}
+          >
             Add
           </Button>
         </form>

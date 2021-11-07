@@ -56,12 +56,7 @@ function Main() {
   const AddVocablary = () => {
     console.log("add");
     setLangWords([...langWords, langWord]);
-    setLangWord({
-      id: null,
-      word: "",
-      translatedWord: "",
-      image: "",
-    });
+    handleModal();
   };
 
   return (
