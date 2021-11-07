@@ -9,14 +9,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 interface langWord {
-  id: number;
+  id: number | null;
   word: string;
   translatedWord: string;
   image?: string;
 }
 
 interface PropsType {
-  key: number;
   langWord: langWord;
 }
 

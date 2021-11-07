@@ -4,23 +4,23 @@ import VocabularyCard from "./VocabularyCard";
 
 import Grid from "@mui/material/Grid";
 
-interface langWord {
-  id: number;
+interface LangWord {
+  id: number | null;
   word: string;
   translatedWord: string;
   image?: string;
 }
 
 interface PrposType {
-  langWords: langWord[];
+  langWords: LangWord[];
 }
 
 const CardList = (props: PrposType) => {
   return (
     <Grid container spacing={4}>
       {props.langWords.map((langWord) => (
-        <Grid item>
-          <VocabularyCard key={langWord.id} langWord={langWord} />
+        <Grid item key={langWord.id}>
+          <VocabularyCard langWord={langWord} />
         </Grid>
       ))}
     </Grid>
