@@ -54,9 +54,15 @@ function Main() {
     }
   };
   const AddVocablary = () => {
-    console.log("add");
+    if (!langWord.word || !langWord.translatedWord) return;
     setLangWords([...langWords, langWord]);
     handleModal();
+    setLangWord({
+      id: null,
+      word: "",
+      translatedWord: "",
+      image: "",
+    });
   };
 
   return (
