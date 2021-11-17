@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+import IconButton from "@mui/material/IconButton";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+
+import DeleteIcon from "@mui/icons-material/Delete";
 
 interface langWord {
   id: number | null;
@@ -17,6 +18,7 @@ interface langWord {
 
 interface PropsType {
   langWord: langWord;
+  deleteVocablary(id: number | null): void;
 }
 
 const VocabularyCard: React.FC<PropsType> = (props) => {
@@ -37,10 +39,13 @@ const VocabularyCard: React.FC<PropsType> = (props) => {
             {props.langWord.translatedWord}
           </Typography>
         </CardContent>
-        {/* <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
+        <IconButton
+          name="delete"
+          aria-label="delete"
+          onClick={() => props.deleteVocablary(props.langWord.id)}
+        >
+          <DeleteIcon />
+        </IconButton>
       </Card>
     </Wrapper>
   );

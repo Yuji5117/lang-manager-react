@@ -13,6 +13,7 @@ interface LangWord {
 
 interface PrposType {
   langWords: LangWord[];
+  deleteVocablary: (id: number | null) => void;
 }
 
 const CardList = (props: PrposType) => {
@@ -20,7 +21,10 @@ const CardList = (props: PrposType) => {
     <Grid container spacing={4}>
       {props.langWords.map((langWord) => (
         <Grid item key={langWord.id}>
-          <VocabularyCard langWord={langWord} />
+          <VocabularyCard
+            langWord={langWord}
+            deleteVocablary={props.deleteVocablary}
+          />
         </Grid>
       ))}
     </Grid>

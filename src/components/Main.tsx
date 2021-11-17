@@ -1,4 +1,4 @@
-import { Button, Modal } from "@mui/material";
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import AddVocabularyModal from "./AddVocabularyModal";
@@ -53,7 +53,7 @@ function Main() {
         break;
     }
   };
-  const AddVocablary = () => {
+  const addVocablary = () => {
     if (!langWord.word || !langWord.translatedWord) return;
     setLangWords([...langWords, langWord]);
     handleModal();
@@ -63,6 +63,14 @@ function Main() {
       translatedWord: "",
       image: "",
     });
+  };
+  const deleteVocablary = (id: number | null): void => {
+    console.log(id);
+    // const newLangWord = langWords.map((word) => {
+    //   if (word.id !== id) return word;
+    // });
+    // console.log(newLangWord);
+    // setLangWords(newLangWord);
   };
 
   return (
@@ -77,11 +85,11 @@ function Main() {
       {openModal && (
         <AddVocabularyModal
           onChengeHandle={onChengeHandle}
-          AddVocablary={AddVocablary}
+          addVocablary={addVocablary}
           handleModal={handleModal}
         />
       )}
-      <CardList langWords={langWords} />
+      <CardList langWords={langWords} deleteVocablary={deleteVocablary} />
     </Wrapper>
   );
 }
