@@ -13,13 +13,14 @@ interface LangWord {
 interface PropsType {
   AddVocablary(): void;
   onChengeHandle: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleModal(): void;
 }
 
 function AddVocabularyModal(props: PropsType) {
   return (
-    <ModalWrapper>
-      <Modal>
-        <form
+    <ModalWrapper onClick={props.handleModal}>
+      <Modal onClick={(event) => event.stopPropagation()}>
+        <Form
           action="
           "
         >
@@ -29,6 +30,7 @@ function AddVocabularyModal(props: PropsType) {
             variant="standard"
             onChange={props.onChengeHandle}
             name="lang"
+            margin="normal"
           />
           <TextField
             id="standard-basic"
@@ -36,15 +38,18 @@ function AddVocabularyModal(props: PropsType) {
             variant="standard"
             onChange={props.onChengeHandle}
             name="translatedLang"
+            margin="normal"
           />
-          <input type="file" />
-          <Button
-            variant="contained"
-            onClick={props.AddVocablary}
-          >
-            Add
-          </Button>
-        </form>
+          <ImageInput type="file" />
+          <ButtonWrapper>
+            <Button variant="outlined" onClick={props.handleModal}>
+              cancel
+            </Button>
+            <Button variant="contained" onClick={props.AddVocablary}>
+              Add
+            </Button>
+          </ButtonWrapper>
+        </Form>
       </Modal>
     </ModalWrapper>
   );
@@ -69,9 +74,26 @@ const Modal = styled.div`
   height: 80%;
   background-color: white;
   border-radius: 10px;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+const Form = styled.form`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: right;
+`;
+
+const ImageInput = styled.input`
+  margin: 40px 0;
 `;

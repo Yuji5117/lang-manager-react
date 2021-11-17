@@ -68,14 +68,17 @@ function Main() {
   return (
     <Wrapper>
       {/* 新規作成ボタン */}
-      <Button variant="contained" onClick={handleModal}>
-        Add Vocablary
-      </Button>
+      <ButtonWrapper>
+        <Button variant="contained" onClick={handleModal}>
+          Add Vocablary
+        </Button>
+      </ButtonWrapper>
       {/* モーダル作成 */}
       {openModal && (
         <AddVocabularyModal
           onChengeHandle={onChengeHandle}
           AddVocablary={AddVocablary}
+          handleModal={handleModal}
         />
       )}
       <CardList langWords={langWords} />
@@ -90,4 +93,8 @@ const Wrapper = styled.div`
   width: 80%;
   margin: 0 auto;
   padding-top: 30px;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-bottom: 30px;
 `;
