@@ -53,6 +53,7 @@ function Main() {
         break;
     }
   };
+
   const addVocablary = () => {
     if (!langWord.word || !langWord.translatedWord) return;
     setLangWords([...langWords, langWord]);
@@ -64,13 +65,10 @@ function Main() {
       image: "",
     });
   };
+
   const deleteVocablary = (id: number | null): void => {
-    console.log(id);
-    // const newLangWord = langWords.map((word) => {
-    //   if (word.id !== id) return word;
-    // });
-    // console.log(newLangWord);
-    // setLangWords(newLangWord);
+    const newLangWords = langWords.filter((word) => word.id !== id);
+    setLangWords(newLangWords);
   };
 
   return (
