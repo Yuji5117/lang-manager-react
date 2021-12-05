@@ -5,7 +5,7 @@ import styled from "styled-components";
 function Header() {
   return (
     <Wrapper>
-      <Link to="/vocablary">Vocablary</Link>
+      <Link to="/vocabulary">Vocabulary</Link>
       <Link to="/tweet">Tweet</Link>
       <Link to="/tweet-list">TweetList</Link>
     </Wrapper>

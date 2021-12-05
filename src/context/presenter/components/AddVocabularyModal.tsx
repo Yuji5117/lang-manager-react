@@ -11,7 +11,7 @@ interface LangWord {
 }
 
 interface PropsType {
-  addVocablary(): void;
+  addVocabulary(): void;
   onChengeHandle: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleModal(): void;
 }
@@ -45,7 +45,7 @@ function AddVocabularyModal(props: PropsType) {
             <Button variant="outlined" onClick={props.handleModal}>
               cancel
             </Button>
-            <Button variant="contained" onClick={props.addVocablary}>
+            <Button variant="contained" onClick={props.addVocabulary}>
               Add
             </Button>
           </ButtonWrapper>

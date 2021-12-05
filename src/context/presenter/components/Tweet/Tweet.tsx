@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 
 import { TextField, Button, Select, MenuItem } from "@mui/material";
@@ -26,6 +26,7 @@ function Tweet() {
                 break;
         }
 
+        console.log(textFormat);
         setFormatNum(e.target.value);
     };
 
@@ -39,6 +40,10 @@ function Tweet() {
                 setTweetJp(e.target.value);
                 break
         }
+        setTextFormat(textFormat);
+        console.log(tweetKr);
+        console.log(tweetJp);
+        console.log(textFormat);
     }
 
     const onTweet = async () => {

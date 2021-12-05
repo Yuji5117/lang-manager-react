@@ -1,38 +1,32 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Vocabulary } from "../../domain/vocabulary";
+import { VocabularyUseCase } from "../../interface/usecase/vocabularyUseCase";
 import AddVocabularyModal from "./AddVocabularyModal";
 import CardList from "./CardList";
 
-interface LangWord {
-  id: number | null;
-  word: string;
-  translatedWord: string;
-  image?: string;
-}
+type Props = {
+  useCase: VocabularyUseCase;
+};
 
-function Main() {
+function Main({ useCase }: Props) {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [langWords, setLangWords] = useState<LangWord[]>([
-    {
-      id: 1,
-      word: "English",
-      translatedWord: "英語",
-      image: "test.jpg",
-    },
-    {
-      id: 2,
-      word: "Japanese",
-      translatedWord: "日本語",
-      image: "test2.jpg",
-    },
-  ]);
-  const [langWord, setLangWord] = useState<LangWord>({
+  const [langWords, setLangWords] = useState<Vocabulary[]>([]);
+  const [langWord, setLangWord] = useState<Vocabulary>({
     id: null,
     word: "",
     translatedWord: "",
     image: "",
   });
+
+  useEffect(() => {
+    fetchVocabularies();
+  }, []);
+
+  const fetchVocabularies = async () => {
+    setLangWords(await useCase.fetchVocabularies());
+  };
 
   const handleModal = () => {
     setOpenModal(!openModal);
@@ -54,7 +48,7 @@ function Main() {
     }
   };
 
-  const addVocablary = () => {
+  const addVocabulary = () => {
     if (!langWord.word || !langWord.translatedWord) return;
     setLangWords([...langWords, langWord]);
     handleModal();
@@ -66,7 +60,7 @@ function Main() {
     });
   };
 
-  const deleteVocablary = (id: number | null): void => {
+  const deleteVocabulary = (id: number | null): void => {
     const newLangWords = langWords.filter((word) => word.id !== id);
     setLangWords(newLangWords);
   };
@@ -76,18 +70,18 @@ function Main() {
       {/* 新規作成ボタン */}
       <ButtonWrapper>
         <Button variant="contained" onClick={handleModal}>
-          Add Vocablary
+          Add Vocabulary
         </Button>
       </ButtonWrapper>
       {/* モーダル作成 */}
       {openModal && (
         <AddVocabularyModal
           onChengeHandle={onChengeHandle}
-          addVocablary={addVocablary}
+          addVocabulary={addVocabulary}
           handleModal={handleModal}
         />
       )}
-      <CardList langWords={langWords} deleteVocablary={deleteVocablary} />
+      <CardList langWords={langWords} deleteVocabulary={deleteVocabulary} />
     </Wrapper>
   );
 }

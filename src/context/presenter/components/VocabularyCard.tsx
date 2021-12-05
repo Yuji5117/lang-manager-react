@@ -18,7 +18,7 @@ interface langWord {
 
 interface PropsType {
   langWord: langWord;
-  deleteVocablary(id: number | null): void;
+  deleteVocabulary(id: number | null): void;
 }
 
 const VocabularyCard: React.FC<PropsType> = (props) => {
@@ -42,7 +42,7 @@ const VocabularyCard: React.FC<PropsType> = (props) => {
         <IconButton
           name="delete"
           aria-label="delete"
-          onClick={() => props.deleteVocablary(props.langWord.id)}
+          onClick={() => props.deleteVocabulary(props.langWord.id)}
         >
           <DeleteIcon />
         </IconButton>

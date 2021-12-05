@@ -1,0 +1,18 @@
+{
+  "vocabularies": { "vocabularies":
+  [
+    {
+      "id": 1,
+      "word": "English",
+      "translatedWord": "英語",
+      "image": "test.jpg"
+    },
+    {
+      "id": 2,
+      "word": "Japanese",
+      "translatedWord": "日本語",
+      "image": "test2.jpg"
+    }
+  ]
+}
+}
