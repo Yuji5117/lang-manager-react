@@ -56,8 +56,11 @@
     "husky": "^7.0.4"
   },
   "husky": {
-		"hooks": {
-			"pre-commit": "npm run start"
-		}
-	}
+    "hooks": {
+      "pre-commit": "npm run start"
+    }
+  },
+  "engines": {
+    "npm": "please_use_yarn_instead"
+  }
 }
