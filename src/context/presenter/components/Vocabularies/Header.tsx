@@ -4,22 +4,42 @@ import styled from "styled-components";
 function Header() {
   return (
     <Wrapper>
-      {/* <HeaderContainer> */}
-        {/* <HomeButton> */}
-          {/* <Link to="/vocabulary">Lang Manager</Link> */}
-        {/* </HomeButton> */}
+      <HeaderContainer>
+        <HomeButton>
+          <Link
+            to="/vocabulary"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Lang Manager
+          </Link>
+        </HomeButton>
         <MenuList>
           <li>
-            <Link to="/vocabulary">Vocabulary</Link>
+            <Link
+              to="/vocabulary"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Vocabulary
+            </Link>
           </li>
           <li>
-            <Link to="/tweet">Tweet</Link>
+            <Link
+              to="/tweet"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Tweet
+            </Link>
           </li>
           <li>
-            <Link to="/tweet-list">TweetList</Link>
+            <Link
+              to="/tweet-list"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Tweet List
+            </Link>
           </li>
         </MenuList>
-      {/* </HeaderContainer> */}
+      </HeaderContainer>
     </Wrapper>
   );
 }
@@ -33,17 +53,25 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-// const HeaderContainer = styled.div`
-//   display: flex;
-// `;
+const HeaderContainer = styled.div`
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-// const HomeButton = styled.div`
-//   display: flex;
-//   list-style-type: none;
-// `;
+const HomeButton = styled.div`
+  display: flex;
+  font-size: 28px;
+  list-style-type: none;
+`;
 
 const MenuList = styled.ul`
-  color: white;
   display: flex;
   list-style-type: none;
+  font-size: 20px;
+  li {
+    padding-left: 20px;
+  }
 `;

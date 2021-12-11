@@ -22,7 +22,7 @@ function Main({ useCase }: Props) {
 
   useEffect(() => {
     fetchVocabularies();
-  });
+  }, []);
 
   const fetchVocabularies = async () => {
     setLangWords(await useCase.fetchVocabularies());
