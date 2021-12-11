@@ -1,6 +1,5 @@
 {
-  "vocabularies": { "vocabularies":
-  [
+  "vocabularies": [
     {
       "id": 1,
       "word": "English",
@@ -44,5 +43,4 @@
       "image": "test2.jpg"
     }
   ]
-}
 }
