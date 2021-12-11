@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import VocabularyCard from "./VocabularyCard";
+import VocabularyCard from "context/presenter/components/VocabularyCard";
 
 import Grid from "@mui/material/Grid";
 

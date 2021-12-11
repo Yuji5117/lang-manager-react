@@ -1,6 +1,6 @@
-import { VocabularyUseCase } from "./../interface/usecase/vocabularyUseCase";
-import { Vocabulary } from "./../domain/vocabulary";
-import VocabularyRepository from "../repository/vocabularyRepository";
+import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
+import { Vocabulary } from "context/domain/vocabulary";
+import VocabularyRepository from "context/interface/repository/vocabularyRepository";
 
 export default class VocabularyUseCaseImpl implements VocabularyUseCase {
   readonly vocabularyRepository: VocabularyRepository;

@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Vocabulary } from "../../domain/vocabulary";
-import { VocabularyUseCase } from "../../interface/usecase/vocabularyUseCase";
+import { Vocabulary } from "context/domain/vocabulary";
+import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
 import AddVocabularyModal from "./AddVocabularyModal";
 import CardList from "./CardList";
 

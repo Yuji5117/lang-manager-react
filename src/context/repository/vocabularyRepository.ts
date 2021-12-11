@@ -1,6 +1,6 @@
-import { Vocabulary } from "./../domain/vocabulary";
-import VocabularyDriver from "../interface/driver/vocabulatyDriver";
-import VocabularyRepository from "../interface/repository/vocabularyRepository";
+import { Vocabulary } from "context/domain/vocabulary";
+import VocabularyDriver from "context/interface/driver/vocabulatyDriver";
+import VocabularyRepository from "context/interface/repository/vocabularyRepository";
 
 export default class VocabularyRepositoryImpl implements VocabularyRepository {
   private readonly vocabularyDriver: VocabularyDriver;

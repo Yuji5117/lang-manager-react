@@ -1,5 +1,4 @@
-import { Vocabulary } from "./../../domain/vocabulary";
-
+import { Vocabulary } from "context/domain/vocabulary";
 export default interface VocabularyRepository {
   findAll(): Promise<Vocabulary[]>;
 }
