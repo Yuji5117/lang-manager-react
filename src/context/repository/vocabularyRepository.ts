@@ -21,4 +21,11 @@ export default class VocabularyRepositoryImpl implements VocabularyRepository {
         )
     );
   }
+
+  async delete(id: number): Promise<void> {
+    const res = await this.vocabularyDriver.delete(id);
+
+    console.log('repo', res);
+    // return;
+  }
 }

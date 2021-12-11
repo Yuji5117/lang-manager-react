@@ -12,4 +12,8 @@ export default class VocabularyUseCaseImpl implements VocabularyUseCase {
   async fetchVocabularies(): Promise<Vocabulary[]> {
     return await this.vocabularyRepository.findAll();
   }
+
+  async deleteVocabulary(id: number): Promise<void> {
+    return await this.vocabularyRepository.delete(id);
+  }
 }
