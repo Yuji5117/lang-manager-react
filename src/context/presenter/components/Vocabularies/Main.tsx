@@ -62,8 +62,7 @@ function Main({ useCase }: Props) {
 
   const deleteVocabulary = async (id: number): Promise<void> => {
     await useCase.deleteVocabulary(id);
-    const newLangWords = langWords.filter((word) => word.id !== id);
-    setLangWords(newLangWords);
+    fetchVocabularies();
   };
 
   return (

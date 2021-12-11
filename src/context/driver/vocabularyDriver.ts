@@ -4,16 +4,12 @@ import VocabularyDriver, {
 export default class VocabularyDriverImpl implements VocabularyDriver {
   async findAll(): Promise<VocabularyJson[]> {
     const res = await fetch("http://localhost:3000/vocabularies");
-    const test = await res.json();
-    console.log(test);
-    return test;
+    return await res.json();;
   }
 
   async delete(id: number): Promise<void> {
-    const res = await fetch(`http://localhost:3000/vocabularies/${id}`, {
+    await fetch(`http://localhost:3000/vocabularies/${id}`, {
       method: "DELETE",
     });
-
-    console.log(res);
   }
 }
