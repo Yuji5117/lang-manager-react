@@ -22,7 +22,7 @@ function Main({ useCase }: Props) {
 
   useEffect(() => {
     fetchVocabularies();
-  }, []);
+  });
 
   const fetchVocabularies = async () => {
     setLangWords(await useCase.fetchVocabularies());
@@ -81,7 +81,9 @@ function Main({ useCase }: Props) {
           handleModal={handleModal}
         />
       )}
-      <CardList langWords={langWords} deleteVocabulary={deleteVocabulary} />
+      <CardListWrapper>
+        <CardList langWords={langWords} deleteVocabulary={deleteVocabulary} />
+      </CardListWrapper>
     </Wrapper>
   );
 }
@@ -90,11 +92,15 @@ export default Main;
 
 const Wrapper = styled.div`
   height: 100%;
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
   padding-top: 30px;
 `;
 
 const ButtonWrapper = styled.div`
+  margin-bottom: 30px;
+`;
+
+const CardListWrapper = styled.div`
   margin-bottom: 30px;
 `;

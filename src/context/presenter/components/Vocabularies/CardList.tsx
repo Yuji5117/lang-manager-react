@@ -1,4 +1,3 @@
-import React from "react";
 import VocabularyCard from "context/presenter/components/Vocabularies/VocabularyCard";
 import { Vocabulary } from "context/domain/vocabulary";
 

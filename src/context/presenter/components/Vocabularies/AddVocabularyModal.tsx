@@ -2,14 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { TextField, Button } from "@mui/material";
-
-interface LangWord {
-  id: number | null;
-  word: string;
-  translatedWord: string;
-  image?: string;
-}
-
 interface PropsType {
   addVocabulary(): void;
   onChengeHandle: (e: React.ChangeEvent<HTMLInputElement>) => void;
