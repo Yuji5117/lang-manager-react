@@ -51,7 +51,6 @@ function Main({ useCase }: Props) {
   const addVocabulary = () => {
     if (!langWord.word || !langWord.translatedWord) return;
     setLangWords([...langWords, langWord]);
-    
     handleModal();
     setLangWord({
       id: null,

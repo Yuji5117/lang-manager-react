@@ -1,5 +1,6 @@
 import { Vocabulary } from "context/domain/vocabulary";
-import VocabularyDriver from "context/interface/driver/vocabulatyDriver";
+import VocabularyDriver, {
+} from "context/interface/driver/vocabulatyDriver";
 import VocabularyRepository from "context/interface/repository/vocabularyRepository";
 
 export default class VocabularyRepositoryImpl implements VocabularyRepository {
@@ -11,7 +12,7 @@ export default class VocabularyRepositoryImpl implements VocabularyRepository {
 
   async findAll(): Promise<Vocabulary[]> {
     const res = await this.vocabularyDriver.findAll();
-    return res.vocabularies.map(
+    return res.map(
       (vocabularyEntity) =>
         new Vocabulary(
           vocabularyEntity.id,
@@ -25,7 +26,6 @@ export default class VocabularyRepositoryImpl implements VocabularyRepository {
   async delete(id: number): Promise<void> {
     const res = await this.vocabularyDriver.delete(id);
 
-    console.log('repo', res);
-    // return;
+    console.log("repo", res);
   }
 }

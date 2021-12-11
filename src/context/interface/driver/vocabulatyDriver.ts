@@ -1,11 +1,7 @@
 export default interface VocabularyDriver {
-  findAll(): Promise<VocabulariesJson>;
+  findAll(): Promise<VocabularyJson[]>;
   delete(id: number): Promise<void>;
 }
-
-export type VocabulariesJson = {
-  vocabularies: VocabularyJson[];
-};
 
 export type VocabularyJson = {
   id: number;

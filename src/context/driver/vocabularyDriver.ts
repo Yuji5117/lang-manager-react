@@ -1,10 +1,12 @@
 import VocabularyDriver, {
-  VocabulariesJson,
+  VocabularyJson,
 } from "context/interface/driver/vocabulatyDriver";
 export default class VocabularyDriverImpl implements VocabularyDriver {
-  async findAll(): Promise<VocabulariesJson> {
+  async findAll(): Promise<VocabularyJson[]> {
     const res = await fetch("http://localhost:3000/vocabularies");
-    return await res.json();
+    const test = await res.json();
+    console.log(test);
+    return test;
   }
 
   async delete(id: number): Promise<void> {
