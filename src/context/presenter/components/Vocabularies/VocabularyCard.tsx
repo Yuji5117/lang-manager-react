@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Vocabulary } from "context/domain/vocabulary";
 
 import Card from "@mui/material/Card";
 import IconButton from "@mui/material/IconButton";
@@ -9,15 +10,8 @@ import Typography from "@mui/material/Typography";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 
-interface langWord {
-  id: number | null;
-  word: string;
-  translatedWord: string;
-  image?: string;
-}
-
 interface PropsType {
-  langWord: langWord;
+  langWord: Vocabulary;
   deleteVocabulary(id: number | null): void;
 }
 

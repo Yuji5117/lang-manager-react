@@ -1,19 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-import VocabularyCard from "context/presenter/components/VocabularyCard";
+import VocabularyCard from "context/presenter/components/Vocabularies/VocabularyCard";
+import { Vocabulary } from "context/domain/vocabulary";
 
 import Grid from "@mui/material/Grid";
 
-interface LangWord {
-  id: number | null;
-  word: string;
-  translatedWord: string;
-  image?: string;
-}
-
 interface PrposType {
-  langWords: LangWord[];
-  deleteVocabulary: (id: number | null) => void;
+  langWords: Vocabulary[];
+  deleteVocabulary: (id: number) => void;
 }
 
 const CardList = (props: PrposType) => {

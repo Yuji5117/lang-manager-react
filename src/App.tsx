@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Main from "context/presenter/components/Main";
-import Header from "context/presenter/components/ Header";
+import Main from "context/presenter/components/Vocabularies/Main";
+import Header from "context/presenter/components/Vocabularies/Header";
 import Tweet from "context/presenter/components/Tweet/Tweet";
 import TweetList from "context/presenter/components/Tweet/TweetList";
 
