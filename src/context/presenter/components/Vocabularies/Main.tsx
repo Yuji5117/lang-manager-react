@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Vocabulary } from "context/domain/vocabulary";
 import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
@@ -52,13 +52,11 @@ function Main({ useCase }: Props) {
 
   return (
     <Wrapper>
-      {/* 新規作成ボタン */}
       <ButtonWrapper>
         <Button variant="contained" onClick={handleModal}>
           Add Vocabulary
         </Button>
       </ButtonWrapper>
-      {/* モーダル作成 */}
       {openModal && (
         <AddVocabularyModal
           addVocabulary={addVocabulary}
