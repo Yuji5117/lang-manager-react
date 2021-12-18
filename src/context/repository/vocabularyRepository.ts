@@ -23,6 +23,10 @@ export default class VocabularyRepositoryImpl implements VocabularyRepository {
     );
   }
 
+  async add(vocabulary: Vocabulary): Promise<void> {
+    await this.vocabularyDriver.add(vocabulary);
+  }
+
   async delete(id: number): Promise<void> {
     await this.vocabularyDriver.delete(id);
   }

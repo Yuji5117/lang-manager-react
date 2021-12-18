@@ -13,6 +13,10 @@ export default class VocabularyUseCaseImpl implements VocabularyUseCase {
     return await this.vocabularyRepository.findAll();
   }
 
+  async addVocabulary(vocabulary: Vocabulary): Promise<void> {
+    return await this.vocabularyRepository.add(vocabulary);
+  }
+
   async deleteVocabulary(id: number): Promise<void> {
     return await this.vocabularyRepository.delete(id);
   }

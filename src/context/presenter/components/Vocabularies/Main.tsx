@@ -32,17 +32,17 @@ function Main({ useCase }: Props) {
     setOpenModal(!openModal);
   };
 
-  const addVocabulary: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    setLangWords([
-      ...langWords,
-      {
-        id: langWords.length,
-        word: data.vocab,
-        translatedWord: data.translatedVocab,
-        image: "test.jpg",
-      },
-    ]);
+  const addVocabulary: SubmitHandler<IFormInputs> = async (
+    data: IFormInputs
+  ) => {
+    await useCase.addVocabulary({
+      id: null,
+      word: data.vocab,
+      translatedWord: data.translatedVocab,
+      image: "test.jpg",
+    });
     handleModal();
+    fetchVocabularies();
   };
 
   const deleteVocabulary = async (id: number): Promise<void> => {
