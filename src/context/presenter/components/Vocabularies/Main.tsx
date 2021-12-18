@@ -5,6 +5,12 @@ import { Vocabulary } from "context/domain/vocabulary";
 import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
 import AddVocabularyModal from "./AddVocabularyModal";
 import CardList from "./CardList";
+import { SubmitHandler } from "react-hook-form";
+
+interface IFormInputs {
+  vocab: string;
+  translatedVocab: string;
+}
 
 type Props = {
   useCase: VocabularyUseCase;
@@ -13,12 +19,6 @@ type Props = {
 function Main({ useCase }: Props) {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [langWords, setLangWords] = useState<Vocabulary[]>([]);
-  const [langWord, setLangWord] = useState<Vocabulary>({
-    id: null,
-    word: "",
-    translatedWord: "",
-    image: "",
-  });
 
   useEffect(() => {
     fetchVocabularies();
@@ -32,32 +32,17 @@ function Main({ useCase }: Props) {
     setOpenModal(!openModal);
   };
 
-  const onChengeHandle = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.preventDefault();
-    console.log(e.target.value);
-    console.log(e);
-    switch (e.target.name) {
-      case "lang":
-        setLangWord({ ...langWord, word: e.target.value });
-        break;
-      case "translatedLang":
-        setLangWord({ ...langWord, translatedWord: e.target.value });
-        break;
-      default:
-        break;
-    }
-  };
-
-  const addVocabulary = () => {
-    if (!langWord.word || !langWord.translatedWord) return;
-    setLangWords([...langWords, langWord]);
+  const addVocabulary: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+    setLangWords([
+      ...langWords,
+      {
+        id: langWords.length,
+        word: data.vocab,
+        translatedWord: data.translatedVocab,
+        image: "test.jpg",
+      },
+    ]);
     handleModal();
-    setLangWord({
-      id: null,
-      word: "",
-      translatedWord: "",
-      image: "",
-    });
   };
 
   const deleteVocabulary = async (id: number): Promise<void> => {
@@ -76,7 +61,6 @@ function Main({ useCase }: Props) {
       {/* モーダル作成 */}
       {openModal && (
         <AddVocabularyModal
-          onChengeHandle={onChengeHandle}
           addVocabulary={addVocabulary}
           handleModal={handleModal}
         />
@@ -95,6 +79,7 @@ const Wrapper = styled.div`
   width: 85%;
   margin: 0 auto;
   padding-top: 30px;
+  z-index: 1;
 `;
 
 const ButtonWrapper = styled.div`

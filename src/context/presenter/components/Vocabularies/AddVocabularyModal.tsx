@@ -1,43 +1,63 @@
 import React from "react";
 import styled from "styled-components";
 
+import { useForm, Controller } from "react-hook-form";
+
 import { TextField, Button } from "@mui/material";
+
+interface IFormInputs {
+  vocab: string;
+  translatedVocab: string;
+}
+
 interface PropsType {
-  addVocabulary(): void;
-  onChengeHandle: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  addVocabulary(data: IFormInputs): void;
   handleModal(): void;
 }
 
 function AddVocabularyModal(props: PropsType) {
+  const { handleSubmit, control } = useForm<IFormInputs>();
   return (
     <ModalWrapper onClick={props.handleModal}>
       <Modal onClick={(event) => event.stopPropagation()}>
-        <Form
-          action="
-          "
-        >
-          <TextField
-            id="standard-basic"
-            label="Lang"
-            variant="standard"
-            onChange={props.onChengeHandle}
-            name="lang"
-            margin="normal"
+        <Form>
+          <Controller
+            name="vocab"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                id="standard-basic"
+                label="Vocab"
+                variant="standard"
+                {...field}
+                margin="normal"
+              />
+            )}
           />
-          <TextField
-            id="standard-basic"
-            label="Your Lang"
-            variant="standard"
-            onChange={props.onChengeHandle}
-            name="translatedLang"
-            margin="normal"
+          <Controller
+            name="translatedVocab"
+            defaultValue=""
+            control={control}
+            render={({ field }) => (
+              <TextField
+                id="standard-basic"
+                label="Your Lang"
+                variant="standard"
+                {...field}
+                margin="normal"
+              />
+            )}
           />
           <ImageInput type="file" />
           <ButtonWrapper>
             <Button variant="outlined" onClick={props.handleModal}>
               cancel
             </Button>
-            <Button variant="contained" onClick={props.addVocabulary}>
+            <Button
+              variant="contained"
+              onClick={handleSubmit(props.addVocabulary)}
+            >
               Add
             </Button>
           </ButtonWrapper>
