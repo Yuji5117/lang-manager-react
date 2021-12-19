@@ -8,6 +8,7 @@ interface PrposType {
   langWords: Vocabulary[];
   deleteVocabulary: (id: number) => void;
   useCase: VocabularyUseCase;
+  fetchVocabularies: () => void;
 }
 
 const CardList = (props: PrposType) => {
@@ -19,6 +20,7 @@ const CardList = (props: PrposType) => {
             langWord={langWord}
             deleteVocabulary={props.deleteVocabulary}
             useCase={props.useCase}
+            fetchVocabularies={props.fetchVocabularies}
           />
         </Grid>
       ))}

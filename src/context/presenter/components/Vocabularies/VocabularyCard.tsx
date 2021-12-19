@@ -17,6 +17,7 @@ interface PropsType {
   langWord: Vocabulary;
   deleteVocabulary(id: number | null): void;
   useCase: VocabularyUseCase;
+  fetchVocabularies: () => void;
 }
 
 const VocabularyCard: React.FC<PropsType> = (props) => {
@@ -28,6 +29,8 @@ const VocabularyCard: React.FC<PropsType> = (props) => {
 
   const editVocabulary = async (id: number, vocab: UpdatedVocab) => {
     await props.useCase.updateVocabulary(id, vocab);
+    handleModal();
+    props.fetchVocabularies();
   };
 
   return (

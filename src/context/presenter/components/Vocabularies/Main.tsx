@@ -68,6 +68,7 @@ function Main({ useCase }: Props) {
           langWords={langWords}
           deleteVocabulary={deleteVocabulary}
           useCase={useCase}
+          fetchVocabularies={fetchVocabularies}
         />
       </CardListWrapper>
     </Wrapper>
