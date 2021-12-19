@@ -76,6 +76,7 @@ const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 `;
 
 const Modal = styled.div`
@@ -86,7 +87,6 @@ const Modal = styled.div`
   height: 80%;
   background-color: white;
   border-radius: 10px;
-  z-index: 2;
 
   display: flex;
   flex-direction: column;
