@@ -11,3 +11,10 @@ export class Vocabulary {
     this.image = image;
   }
 }
+
+
+export interface UpdatedVocab{
+  id: number;
+  vocab: string;
+  translatedVocab: string;
+}

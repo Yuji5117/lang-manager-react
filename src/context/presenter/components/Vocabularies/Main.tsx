@@ -64,7 +64,11 @@ function Main({ useCase }: Props) {
         />
       )}
       <CardListWrapper>
-        <CardList langWords={langWords} deleteVocabulary={deleteVocabulary} />
+        <CardList
+          langWords={langWords}
+          deleteVocabulary={deleteVocabulary}
+          useCase={useCase}
+        />
       </CardListWrapper>
     </Wrapper>
   );

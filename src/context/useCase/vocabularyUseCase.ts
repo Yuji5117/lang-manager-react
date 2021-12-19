@@ -1,5 +1,5 @@
 import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
-import { Vocabulary } from "context/domain/vocabulary";
+import { Vocabulary, UpdatedVocab } from "context/domain/vocabulary";
 import VocabularyRepository from "context/interface/repository/vocabularyRepository";
 
 export default class VocabularyUseCaseImpl implements VocabularyUseCase {
@@ -15,6 +15,10 @@ export default class VocabularyUseCaseImpl implements VocabularyUseCase {
 
   async addVocabulary(vocabulary: Vocabulary): Promise<void> {
     return await this.vocabularyRepository.add(vocabulary);
+  }
+
+  async updateVocabulary(id: number, vocabulary: UpdatedVocab): Promise<void> {
+    return await this.vocabularyRepository.update(id, vocabulary);
   }
 
   async deleteVocabulary(id: number): Promise<void> {

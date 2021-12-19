@@ -1,4 +1,4 @@
-import { Vocabulary } from "context/domain/vocabulary";
+import { Vocabulary, UpdatedVocab } from "context/domain/vocabulary";
 import VocabularyDriver, {
 } from "context/interface/driver/vocabulatyDriver";
 import VocabularyRepository from "context/interface/repository/vocabularyRepository";
@@ -25,6 +25,10 @@ export default class VocabularyRepositoryImpl implements VocabularyRepository {
 
   async add(vocabulary: Vocabulary): Promise<void> {
     await this.vocabularyDriver.add(vocabulary);
+  }
+
+  async update(id: number, vocabulary: UpdatedVocab): Promise<void> {
+    await this.vocabularyDriver.update(id, vocabulary);
   }
 
   async delete(id: number): Promise<void> {

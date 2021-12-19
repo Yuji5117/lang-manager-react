@@ -1,4 +1,4 @@
-import { Vocabulary } from "context/domain/vocabulary";
+import { Vocabulary, UpdatedVocab } from "context/domain/vocabulary";
 import VocabularyDriver, {
   VocabularyJson,
 } from "context/interface/driver/vocabulatyDriver";
@@ -16,6 +16,21 @@ export default class VocabularyDriverImpl implements VocabularyDriver {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(vocabulary),
+    });
+  }
+
+  async update(id: number, vocabulary: UpdatedVocab): Promise<void> {
+    await fetch(`http://localhost:3000/vocabularies/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        word: vocabulary.vocab,
+        translatedWord: vocabulary.translatedVocab,
+        image: "test.jpg",
+      }),
     });
   }
 
