@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-import { useForm, Controller } from "react-hook-form";
-
-import { TextField, Button } from "@mui/material";
 import { Vocabulary } from "context/domain/vocabulary";
+import VocabularyForm from "./VocabularyForm";
 
 interface IFormInputs {
   vocab: string;
@@ -17,54 +15,10 @@ interface PropsType {
 }
 
 function EditVocabularyModal(props: PropsType) {
-  const { handleSubmit, control } = useForm<IFormInputs>();
   return (
     <ModalWrapper onClick={props.handleModal}>
       <Modal onClick={(event) => event.stopPropagation()}>
-        <Form>
-          <Controller
-            name="vocab"
-            control={control}
-            defaultValue={props.vocabulary.word}
-            render={({ field }) => (
-              <TextField
-                id="standard-basic"
-                label="Vocab"
-                variant="standard"
-                {...field}
-                margin="normal"
-              />
-            )}
-          />
-          <Controller
-            name="translatedVocab"
-            defaultValue={props.vocabulary.translatedWord}
-            control={control}
-            render={({ field }) => (
-              <TextField
-                id="standard-basic"
-                label="Your Lang"
-                variant="standard"
-                {...field}
-                margin="normal"
-              />
-            )}
-          />
-          <ImageInput type="file" />
-          <ButtonWrapper>
-            <Button variant="outlined" onClick={props.handleModal}>
-              cancel
-            </Button>
-            <Button
-              variant="contained"
-              onClick={handleSubmit((fields) =>
-                props.editVocabulary(props.vocabulary.id, fields)
-              )}
-            >
-              Update
-            </Button>
-          </ButtonWrapper>
-        </Form>
+        <VocabularyForm editVocabulary={props.editVocabulary} vocabulary={props.vocabulary} handleModal={props.handleModal} />
       </Modal>
     </ModalWrapper>
   );
@@ -95,20 +49,4 @@ const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const Form = styled.form`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: right;
-`;
-
-const ImageInput = styled.input`
-  margin: 40px 0;
 `;
