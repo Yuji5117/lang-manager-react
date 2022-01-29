@@ -4,12 +4,14 @@ import VocabularyDriver, {
 } from "context/interface/driver/vocabulatyDriver";
 export default class VocabularyDriverImpl implements VocabularyDriver {
   async findAll(): Promise<VocabularyJson[]> {
-    const res = await fetch("http://localhost:3000/vocabularies");
+    const res = await fetch(
+      `${process.env.REACT_APP_API_ENDPOINT}/vocabularies`
+    );
     return await res.json();
   }
 
   async add(vocabulary: Vocabulary): Promise<void> {
-    await fetch(`http://localhost:3000/vocabularies`, {
+    await fetch(`${process.env.REACT_APP_API_ENDPOINT}vocabularies`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -20,7 +22,7 @@ export default class VocabularyDriverImpl implements VocabularyDriver {
   }
 
   async update(id: number, vocabulary: UpdatedVocab): Promise<void> {
-    await fetch(`http://localhost:3000/vocabularies/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_ENDPOINT}/vocabularies/${id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -35,7 +37,7 @@ export default class VocabularyDriverImpl implements VocabularyDriver {
   }
 
   async delete(id: number): Promise<void> {
-    await fetch(`http://localhost:3000/vocabularies/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_ENDPOINT}/vocabularies/${id}`, {
       method: "DELETE",
     });
   }
