@@ -13,10 +13,26 @@ interface IFormInputs {
 interface PropsType {
   addVocabulary(data: IFormInputs): void;
   handleModal(): void;
+  imageUrl: any;
+  setImageUrl: React.Dispatch<React.SetStateAction<any>>;
 }
 
 function AddVocabularyModal(props: PropsType) {
   const { handleSubmit, control } = useForm<IFormInputs>();
+
+  const onHandleChange = (e: any) => {
+    e.preventDefault();
+    // const file = new FormData();
+    // file.append("image", e.target.files[0]);
+    // props.setImageUrl(file);
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      props.setImageUrl(e.target?.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <ModalWrapper onClick={props.handleModal}>
       <Modal onClick={(event) => event.stopPropagation()}>
@@ -49,7 +65,13 @@ function AddVocabularyModal(props: PropsType) {
               />
             )}
           />
-          <ImageInput type="file" />
+          <ImageInput
+            type="file"
+            accept="image/*"
+            name="imageUrl"
+            onChange={onHandleChange}
+          />
+          <img src={props.imageUrl} width="300" />
           <ButtonWrapper>
             <Button variant="outlined" onClick={props.handleModal}>
               cancel

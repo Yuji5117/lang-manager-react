@@ -19,6 +19,7 @@ type Props = {
 function Main({ useCase }: Props) {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [langWords, setLangWords] = useState<Vocabulary[]>([]);
+  const [imageUrl, setImageUrl] = useState<any>();
 
   useEffect(() => {
     fetchVocabularies();
@@ -39,7 +40,7 @@ function Main({ useCase }: Props) {
       id: null,
       word: data.vocab,
       translatedWord: data.translatedVocab,
-      image: "test.jpg",
+      image: imageUrl,
     });
     handleModal();
     fetchVocabularies();
@@ -61,6 +62,8 @@ function Main({ useCase }: Props) {
         <AddVocabularyModal
           addVocabulary={addVocabulary}
           handleModal={handleModal}
+          imageUrl={imageUrl}
+          setImageUrl={setImageUrl}
         />
       )}
       <CardListWrapper>
