@@ -1,13 +1,17 @@
-import VocabularyCard from "context/presenter/components/Vocabularies/VocabularyCard";
-import { Vocabulary } from "context/domain/vocabulary";
-import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
+import VocabularyCard from "components/Vocabularies/VocabularyCard";
 
 import Grid from "@mui/material/Grid";
+
+interface Vocabulary {
+  id: number | null;
+  word: string;
+  translatedWord: string;
+  image: string;
+}
 
 interface PrposType {
   langWords: Vocabulary[];
   deleteVocabulary: (id: number) => void;
-  useCase: VocabularyUseCase;
   fetchVocabularies: () => void;
 }
 
@@ -19,7 +23,6 @@ const CardList = (props: PrposType) => {
           <VocabularyCard
             langWord={langWord}
             deleteVocabulary={props.deleteVocabulary}
-            useCase={props.useCase}
             fetchVocabularies={props.fetchVocabularies}
           />
         </Grid>

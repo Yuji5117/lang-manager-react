@@ -1,22 +1,24 @@
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Vocabulary } from "context/domain/vocabulary";
-import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
 import AddVocabularyModal from "./AddVocabularyModal";
 import CardList from "./CardList";
 import { SubmitHandler } from "react-hook-form";
+import axios from "axios";
 
 interface IFormInputs {
   vocab: string;
   translatedVocab: string;
 }
 
-type Props = {
-  useCase: VocabularyUseCase;
-};
+interface Vocabulary {
+  id: number | null;
+  word: string;
+  translatedWord: string;
+  image: string;
+}
 
-function Main({ useCase }: Props) {
+function Main() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [langWords, setLangWords] = useState<Vocabulary[]>([]);
   const [imageUrl, setImageUrl] = useState<any>();
@@ -26,7 +28,10 @@ function Main({ useCase }: Props) {
   }, []);
 
   const fetchVocabularies = async () => {
-    setLangWords(await useCase.fetchVocabularies());
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_ENDPOINT}/vocabularies`
+    );
+    setLangWords(res.data);
   };
 
   const handleModal = () => {
@@ -36,18 +41,20 @@ function Main({ useCase }: Props) {
   const addVocabulary: SubmitHandler<IFormInputs> = async (
     data: IFormInputs
   ) => {
-    await useCase.addVocabulary({
+    await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/vocabularies`, {
       id: null,
       word: data.vocab,
       translatedWord: data.translatedVocab,
-      image: imageUrl,
+      image: "test.jpg",
     });
     handleModal();
     fetchVocabularies();
   };
 
   const deleteVocabulary = async (id: number): Promise<void> => {
-    await useCase.deleteVocabulary(id);
+    await axios.delete(
+      `${process.env.REACT_APP_API_ENDPOINT}/vocabularies/${id}`
+    );
     fetchVocabularies();
   };
 
@@ -70,7 +77,6 @@ function Main({ useCase }: Props) {
         <CardList
           langWords={langWords}
           deleteVocabulary={deleteVocabulary}
-          useCase={useCase}
           fetchVocabularies={fetchVocabularies}
         />
       </CardListWrapper>

@@ -1,17 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Main from "context/presenter/components/Vocabularies/Main";
-import Header from "context/presenter/components/Vocabularies/Header";
-import Tweet from "context/presenter/components/Tweet/Tweet";
-import TweetList from "context/presenter/components/Tweet/TweetList";
-
-import VocabularyRepositoryImpl from "context/repository/vocabularyRepository";
-import VocabularyDriverImpl from "context/driver/vocabularyDriver";
-import VocabularyUseCaseImpl from "context/useCase/vocabularyUseCase";
-
-const repository = new VocabularyRepositoryImpl(new VocabularyDriverImpl());
-const useCase = new VocabularyUseCaseImpl(repository);
+import Main from "components/Vocabularies/Main";
+import Header from "components/Vocabularies/Header";
+import Tweet from "components/Tweet/Tweet";
+import TweetList from "components/Tweet/TweetList";
 
 function App() {
   return (
@@ -20,7 +13,7 @@ function App() {
         <Header />
         <div>
           <Route path="/vocabulary">
-            <Main useCase={useCase} />
+            <Main />
           </Route>
           <Route path="/tweet" component={Tweet} />
           <Route path="/tweet-list" component={TweetList} />

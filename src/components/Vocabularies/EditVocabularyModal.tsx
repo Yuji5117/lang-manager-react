@@ -1,11 +1,16 @@
 import styled from "styled-components";
-
-import { Vocabulary } from "context/domain/vocabulary";
 import VocabularyForm from "./VocabularyForm";
 
 interface IFormInputs {
   vocab: string;
   translatedVocab: string;
+}
+
+interface Vocabulary {
+  id: number | null;
+  word: string;
+  translatedWord: string;
+  image: string;
 }
 
 interface PropsType {
@@ -18,7 +23,11 @@ function EditVocabularyModal(props: PropsType) {
   return (
     <ModalWrapper onClick={props.handleModal}>
       <Modal onClick={(event) => event.stopPropagation()}>
-        <VocabularyForm editVocabulary={props.editVocabulary} vocabulary={props.vocabulary} handleModal={props.handleModal} />
+        <VocabularyForm
+          editVocabulary={props.editVocabulary}
+          vocabulary={props.vocabulary}
+          handleModal={props.handleModal}
+        />
       </Modal>
     </ModalWrapper>
   );

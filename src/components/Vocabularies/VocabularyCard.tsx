@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Vocabulary, UpdatedVocab } from "context/domain/vocabulary";
 
 import Card from "@mui/material/Card";
 import IconButton from "@mui/material/IconButton";
@@ -11,13 +10,25 @@ import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditVocabularyModal from "./EditVocabularyModal";
-import { VocabularyUseCase } from "context/interface/usecase/vocabularyUseCase";
+import axios from "axios";
+
+interface Vocabulary {
+  id: number | null;
+  word: string;
+  translatedWord: string;
+  image: string;
+}
 
 interface PropsType {
   langWord: Vocabulary;
   deleteVocabulary(id: number | null): void;
-  useCase: VocabularyUseCase;
   fetchVocabularies: () => void;
+}
+
+export interface UpdatedVocab {
+  id: number;
+  vocab: string;
+  translatedVocab: string;
 }
 
 const VocabularyCard: React.FC<PropsType> = (props) => {
@@ -28,7 +39,14 @@ const VocabularyCard: React.FC<PropsType> = (props) => {
   };
 
   const editVocabulary = async (id: number, vocab: UpdatedVocab) => {
-    await props.useCase.updateVocabulary(id, vocab);
+    await axios.put(
+      `${process.env.REACT_APP_API_ENDPOINT}/vocabularies/${id}`,
+      {
+        word: vocab.vocab,
+        translatedWord: vocab.translatedVocab,
+        image: "test.jpg",
+      }
+    );
     handleModal();
     props.fetchVocabularies();
   };

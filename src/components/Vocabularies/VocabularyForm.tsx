@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import { useForm, Controller } from "react-hook-form";
-import { Vocabulary } from "context/domain/vocabulary";
 
 import { TextField, Button } from "@mui/material";
 
 interface IFormInputs {
   vocab: string;
   translatedVocab: string;
+}
+
+interface Vocabulary {
+  id: number | null;
+  word: string;
+  translatedWord: string;
+  image: string;
 }
 
 interface PropsType {
