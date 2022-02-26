@@ -4,50 +4,7 @@ import styled from "styled-components";
 function Header() {
   return (
     <Wrapper>
-      <HeaderContainer>
-        <HomeButton>
-          <Link
-            to="/vocabulary"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            Lang Manager
-          </Link>
-        </HomeButton>
-        <MenuList>
-          <li>
-            <Link
-              to="/vocabulary"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Vocabulary
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/table"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Table
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/tweet"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Tweet
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/tweet-list"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Tweet List
-            </Link>
-          </li>
-        </MenuList>
-      </HeaderContainer>
+      <HeaderContainer></HeaderContainer>
     </Wrapper>
   );
 }
@@ -67,19 +24,4 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const HomeButton = styled.div`
-  display: flex;
-  font-size: 28px;
-  list-style-type: none;
-`;
-
-const MenuList = styled.ul`
-  display: flex;
-  list-style-type: none;
-  font-size: 20px;
-  li {
-    padding-left: 20px;
-  }
 `;

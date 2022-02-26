@@ -6,13 +6,16 @@ import Header from "components/Vocabularies/Header";
 import Tweet from "components/Tweet/Tweet";
 import TweetList from "components/Tweet/TweetList";
 import Table from "components/VocabularyTable/Table";
+import SideMenu from "components/Vocabularies/SideMenu";
+import styled from "styled-components";
 
 function App() {
   return (
-    <div className="App">
+    <Wrapper>
       <Router>
-        <Header />
+        <SideMenu />
         <div>
+          <Header />
           <Route path="/vocabulary">
             <Main />
           </Route>
@@ -23,8 +26,12 @@ function App() {
           <Route path="/tweet-list" component={TweetList} />
         </div>
       </Router>
-    </div>
+    </Wrapper>
   );
 }
 
 export default App;
+
+const Wrapper = styled.div`
+  display: flex;
+`;
