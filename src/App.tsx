@@ -5,6 +5,7 @@ import Main from "components/Vocabularies/Main";
 import Header from "components/Vocabularies/Header";
 import Tweet from "components/Tweet/Tweet";
 import TweetList from "components/Tweet/TweetList";
+import Table from "components/VocabularyTable/Table";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <div>
           <Route path="/vocabulary">
             <Main />
+          </Route>
+          <Route path="/table">
+            <Table />
           </Route>
           <Route path="/tweet" component={Tweet} />
           <Route path="/tweet-list" component={TweetList} />

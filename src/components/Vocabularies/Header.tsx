@@ -24,6 +24,14 @@ function Header() {
           </li>
           <li>
             <Link
+              to="/table"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Table
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/tweet"
               style={{ textDecoration: "none", color: "white" }}
             >

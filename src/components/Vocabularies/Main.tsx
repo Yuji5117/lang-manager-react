@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
+import { SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import AddVocabularyModal from "./AddVocabularyModal";
 import CardList from "./CardList";
-import { SubmitHandler } from "react-hook-form";
 import axios from "axios";
 
 interface IFormInputs {
