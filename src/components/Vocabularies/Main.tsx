@@ -88,7 +88,7 @@ export default Main;
 
 const Wrapper = styled.div`
   height: 100%;
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
   padding-top: 30px;
   z-index: 1;
