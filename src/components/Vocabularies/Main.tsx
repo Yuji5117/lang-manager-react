@@ -60,26 +60,30 @@ function Main() {
 
   return (
     <Wrapper>
-      <ButtonWrapper>
-        <Button variant="contained" onClick={handleModal}>
-          Add Vocabulary
-        </Button>
-      </ButtonWrapper>
-      {openModal && (
-        <AddVocabularyModal
-          addVocabulary={addVocabulary}
-          handleModal={handleModal}
-          imageUrl={imageUrl}
-          setImageUrl={setImageUrl}
-        />
-      )}
-      <CardListWrapper>
-        <CardList
-          langWords={langWords}
-          deleteVocabulary={deleteVocabulary}
-          fetchVocabularies={fetchVocabularies}
-        />
-      </CardListWrapper>
+      <Container>
+        <MainArea>
+          <ButtonWrapper>
+            <Button variant="contained" onClick={handleModal}>
+              Add Vocabulary
+            </Button>
+          </ButtonWrapper>
+          {openModal && (
+            <AddVocabularyModal
+              addVocabulary={addVocabulary}
+              handleModal={handleModal}
+              imageUrl={imageUrl}
+              setImageUrl={setImageUrl}
+            />
+          )}
+          <CardListWrapper>
+            <CardList
+              langWords={langWords}
+              deleteVocabulary={deleteVocabulary}
+              fetchVocabularies={fetchVocabularies}
+            />
+          </CardListWrapper>
+        </MainArea>
+      </Container>
     </Wrapper>
   );
 }
@@ -93,6 +97,14 @@ const Wrapper = styled.div`
   padding-top: 30px;
   z-index: 1;
 `;
+
+const Container = styled.div`
+  display: flex;
+`;
+
+const MainArea = styled.div``;
+
+const FormArea = styled.div``;
 
 const ButtonWrapper = styled.div`
   margin-bottom: 30px;

@@ -56,7 +56,7 @@ export default SideMenu;
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 200px;
+  width: 400px;
   background-color: rgb(47, 153, 206);
   opacity: 0.8;
   display: flex;
