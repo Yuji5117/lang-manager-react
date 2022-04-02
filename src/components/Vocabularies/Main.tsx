@@ -18,7 +18,11 @@ interface Vocabulary {
   image: string;
 }
 
-function Main() {
+interface PropsType {
+  filterValue: string;
+}
+
+function Main({ filterValue }: PropsType) {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [langWords, setLangWords] = useState<Vocabulary[]>([]);
   const [imageUrl, setImageUrl] = useState<any>();
@@ -80,6 +84,7 @@ function Main() {
               langWords={langWords}
               deleteVocabulary={deleteVocabulary}
               fetchVocabularies={fetchVocabularies}
+              filterValue={filterValue}
             />
           </CardListWrapper>
         </MainArea>

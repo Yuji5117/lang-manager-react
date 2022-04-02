@@ -1,12 +1,22 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Header() {
+function Header({
+  filterValue,
+  onFilterChange,
+}: {
+  filterValue: string;
+  onFilterChange: (e: any) => void;
+}) {
   return (
     <Wrapper>
       <HeaderContainer>
         <h1>Vocabularies</h1>
-        <SearchInput type="text" placeholder="Search for Vocabularies" />
+        <SearchInput
+          onChange={(e) => onFilterChange(e)}
+          defaultValue={filterValue}
+          type="text"
+          placeholder="Search for Vocabularies"
+        />
         {/* アバター */}
         <div>アバター</div>
       </HeaderContainer>
@@ -17,6 +27,7 @@ function Header() {
 export default Header;
 
 const Wrapper = styled.div`
+  width: 100%;
   height: 60px;
   background-color: #e5e5e5;
   opacity: 0.8;
